@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 export default function Home() {
@@ -95,6 +96,9 @@ export default function Home() {
           />
           Go to nextjs.org →
         </a>
+        <Button className="bg-linear-45 from-indigo-500 via-purple-500 to-pink-500 rounded-full">
+          Get started
+        </Button>
       </footer>
     </div>
   );
