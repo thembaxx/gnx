@@ -233,7 +233,9 @@ const SoundwaveIcon = (props: React.SVGProps<SVGSVGElement>) => (
 // );
 
 function ChatInput() {
+  const [isOpen, setIsOpen] = useState(false);
   const [files, setFiles] = useState<File[]>([]);
+  const [isFocused, setIsFocused] = useState(false);
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -252,11 +254,17 @@ function ChatInput() {
     setFiles([...files, ...filesList]);
   }
 
-  const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="space-y-4 w-full">
       {files && files.length > 0 && <Gallery files={files} />}
-      <motion.div className="rounded-2xl shadow-2xs border bg-neutral-50 dark:bg-neutral-900">
+      <motion.div
+        className={cn(
+          "rounded-2xl shadow-2xs border bg-neutral-50 dark:bg-neutral-900",
+          {
+            "ring-4 outline-1 ring-blue-600/20 outline-blue-600/40": isFocused,
+          }
+        )}
+      >
         <Form {...form}>
           <motion.form
             layout="position"
@@ -277,12 +285,14 @@ function ChatInput() {
                       <Textarea
                         placeholder="Type your message here"
                         className={cn(
-                          "resize-none text-base bg-transparent border-none shadow-none pt-3.5 h-full min-h-0 rounded-2xl ring-doger-blue/40 pb-0 pr-10",
+                          "resize-none text-base bg-transparent border-none shadow-none pt-3.5 h-full min-h-0 rounded-2xl focus-visible:ring-0 focus-visible:outline-0 pb-0 pr-10",
                           {
                             "resize-y pr-0": isOpen,
                           }
                         )}
                         {...field}
+                        onFocus={() => setIsFocused(true)}
+                        onBlur={() => setIsFocused(false)}
                       />
                     </div>
                   </FormControl>

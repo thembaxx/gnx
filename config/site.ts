@@ -3,7 +3,7 @@ export type SiteConfig = typeof siteConfig;
 export const siteConfig = {
   name: "NEXTDOT",
   description: "The best chapter",
-  version: "1.0.40.0",
+  version: "0.0.0.1",
   navItems: [
     {
       label: "Home",
