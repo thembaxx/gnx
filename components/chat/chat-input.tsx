@@ -256,7 +256,16 @@ function ChatInput() {
 
   return (
     <div className="space-y-4 w-full">
-      {files && files.length > 0 && <Gallery files={files} />}
+      {files && files.length > 0 && (
+        <Gallery
+          files={files}
+          onRemoveClick={(index) => {
+            const copy = [...files];
+            copy.splice(index, 1);
+            setFiles(copy);
+          }}
+        />
+      )}
       <motion.div
         className={cn(
           "rounded-2xl shadow-2xs border bg-neutral-50 dark:bg-neutral-900",
@@ -267,7 +276,7 @@ function ChatInput() {
       >
         <Form {...form}>
           <motion.form
-            layout="position"
+            layout
             className="relative"
             onSubmit={form.handleSubmit(onSubmit)}
           >
@@ -277,7 +286,11 @@ function ChatInput() {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <div
+                    <motion.div
+                      layout
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.75, type: "spring" }}
                       className={cn("h-13 relative z-20 mr-24", {
                         "resize-y h-32 mr-0 mb-16": isOpen,
                       })}
@@ -294,7 +307,7 @@ function ChatInput() {
                         onFocus={() => setIsFocused(true)}
                         onBlur={() => setIsFocused(false)}
                       />
-                    </div>
+                    </motion.div>
                   </FormControl>
                 </FormItem>
               )}
