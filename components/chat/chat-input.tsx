@@ -269,11 +269,15 @@ function ChatInput() {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <div className={cn("h-13", { "resize-y h-32": isOpen })}>
+                    <div
+                      className={cn("h-13 relative z-20 mr-24", {
+                        "resize-y h-32 mr-0 mb-16": isOpen,
+                      })}
+                    >
                       <Textarea
                         placeholder="Type your message here"
                         className={cn(
-                          "resize-none text-base bg-transparent border-none shadow-none h-full min-h-0 rounded-2xl ring-doger-blue/40 pb-0 pr-10",
+                          "resize-none text-base bg-transparent border-none shadow-none pt-3.5 h-full min-h-0 rounded-2xl ring-doger-blue/40 pb-0 pr-10",
                           {
                             "resize-y pr-0": isOpen,
                           }
@@ -286,7 +290,7 @@ function ChatInput() {
               )}
             />
             <motion.div
-              className="absolute bottom-0 z-100 right-0 w-full flex justify-end items-center px-2 py-2 overflow-hidden"
+              className="absolute bottom-0 right-0 w-full flex justify-end items-center px-2 py-2 overflow-hidden"
               layout="position"
             >
               <AnimatePresence>
