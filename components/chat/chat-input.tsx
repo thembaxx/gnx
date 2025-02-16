@@ -234,7 +234,11 @@ function ChatInput() {
       transition={{ layout: { duration: 1, type: "spring" } }}
     >
       <Form {...form}>
-        <motion.form layout="position" className="relative">
+        <motion.form
+          layout="position"
+          className="relative"
+          onSubmit={form.handleSubmit(onSubmit)}
+        >
           <FormField
             control={form.control}
             name="text"
