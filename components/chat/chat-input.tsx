@@ -230,7 +230,7 @@ function ChatInput() {
   return (
     <div className="space-y-4 w-full">
       {files && files.length > 0 && <Gallery files={files} />}
-      <motion.div className="rounded-2xl shadow-2xs border bg-neutral-50">
+      <motion.div className="rounded-2xl shadow-2xs border bg-neutral-50 dark:bg-neutral-900">
         <Form {...form}>
           <motion.form
             layout="position"
@@ -308,12 +308,12 @@ function ChatInput() {
                     <ExpandIcon className="!h-5 !w-5 p-0 text-icon" />
                   )}
                   {isOpen && (
-                    <CompactIcon className="!h-5 !w-5 p-0 text-icon" />
+                    <CompactIcon className="!h-5 !w-5 p-0 text-blue-500" />
                   )}
                 </Button>
                 <motion.div whileTap={{ scale: 0.95 }}>
                   <Button
-                    className="bg-doger-blue rounded-xl shadow-doger-blue/10 shadow-lg"
+                    className="bg-doger-blue rounded-xl shadow-doger-blue/10 shadow-lg text-white"
                     aria-label="Send button"
                     disabled={!form.watch("text")}
                     type="submit"
