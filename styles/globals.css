@@ -125,6 +125,8 @@
 
 @theme {
   --color-doger-blue: oklch(65% 0.191 253.6);
+  --color-icon: oklch(37.91% 0 0);
+  --color-off-white: oklch(95.64% 0.0025 48.72);
 }
 /*
   ---break---
