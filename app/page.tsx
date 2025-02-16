@@ -102,7 +102,7 @@ export default function Home() {
           Go to nextjs.org →
         </a>
         <Button
-          className="bg-linear-45 from-indigo-500 via-purple-500 to-pink-500 rounded-full"
+          className="bg-linear-45 from-indigo-500 via-purple-500 to-pink-500 rounded-full text-white"
           onClick={() => router.push("/chat")}
         >
           Get started
