@@ -3,7 +3,7 @@ export type SiteConfig = typeof siteConfig;
 export const siteConfig = {
   name: "GNX",
   description: "Black Grand National!",
-  version: "0.0.0.3",
+  version: "0.0.0.35",
   navItems: [
     {
       label: "Home",

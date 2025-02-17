@@ -8,6 +8,8 @@ import { motion } from "motion/react";
 //   { ssr: false }
 // );
 
+import Wave from "react-wavify";
+
 import { useReactMediaRecorder } from "react-media-recorder";
 
 import { Button } from "@/components/ui/button";
@@ -191,16 +193,6 @@ const AudioRecorder: React.FC = () => {
     setMinute("00");
   }, []);
 
-  // useEffect(() => {
-  //   if (status === "stopped" && mediaBlobUrl) {
-  //     setAudioSrc(mediaBlobUrl);
-  //   } else if (status === "stopped") {
-  //     setAudioSrc(mediaBlobUrl ? mediaBlobUrl : null);
-  //     stopTimer();
-  //     clearBlobUrl();
-  //   }
-  // }, [clearBlobUrl, mediaBlobUrl, status, stopTimer]);
-
   const onButtonClick = () => {
     if (status === "idle") {
       startRecording();
@@ -215,9 +207,9 @@ const AudioRecorder: React.FC = () => {
   return (
     <div className="h-full w-full flex flex-col py-4">
       <div className="grow">
-        <div className="bg-secondary/40 backdrop-blur-2xl flex flex-col h-full rounded-2xl p-4">
+        <div className="bg-secondary/40 backdrop-blur-2xl flex flex-col h-full rounded-2xl p-2">
           {!error && (
-            <div className="flex items-center justify-center gap-2">
+            <div className="flex items-center justify-center gap-2 py-2">
               <div
                 className={cn(
                   "h-2 w-2 rounded-full",
@@ -260,17 +252,35 @@ const AudioRecorder: React.FC = () => {
               </div>
             </div>
           )}
-          <div>
+          <div className="grow flex flex-col items-center relative bg-black/20 rounded-xl mt-2">
             {mediaBlobUrl && (
-              <div className="w-full mt-6">
-                <div className="h-16">
+              <div className="w-full my-auto">
+                <div className="h-full">
                   <WaveSurferPlayer
-                    audioUrl={mediaBlobUrl}
+                    audioUrl={mediaBlobUrl ?? "/file_example_WAV_2MG.wav"}
                     playbackState={playbackState}
                     setCurrentTime={setCurrentTime}
                     setDuration={setDuration}
                     setIsPlaying={setIsPlaying}
                   />
+                </div>
+              </div>
+            )}
+            {status === "recording" && (
+              <div className="h-full relative flex items-center justify-center">
+                <Wave
+                  fill="#FF8C82"
+                  paused={false}
+                  className="h-full"
+                  style={{ display: "flex" }}
+                  options={{
+                    amplitude: 20,
+                    speed: 0.15,
+                    points: 3,
+                  }}
+                />
+                <div className="absolute">
+                  <PauseIcon />
                 </div>
               </div>
             )}

@@ -22,10 +22,10 @@ const useWavesurfer = ({ containerRef, audioUrl }: useWavesurferProps) => {
       container: containerRef.current,
       cursorWidth: 0,
       barHeight: 2.5,
-      height: "auto",
-      waveColor: "#B2B2B2",
-      progressColor: "#6750A4", //"#8B52F6",
-      barWidth: 3,
+      height: 256,
+      waveColor: "#FFE1DE",
+      progressColor: "#FE6250",
+      barWidth: 2,
       barGap: 6,
       barRadius: 16,
       ...props,
@@ -74,14 +74,6 @@ const WaveSurferPlayer = ({
     x();
   }, [playbackState]);
 
-  //   const onPlayClick = useCallback(() => {
-  //     if (!wavesurfer) return;
-
-  //     wavesurfer.isPlaying() ? wavesurfer.pause() : wavesurfer.play();
-  //   }, [wavesurfer]);
-
-  // Initialize wavesurfer when the container mounts
-  // or any of the props change
   useEffect(() => {
     if (!wavesurfer) return;
 
