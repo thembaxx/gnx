@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import Gallery from "./gallery";
+import Voice from "./voice/voice";
 
 const FormSchema = z.object({
   text: z.string(),
@@ -295,6 +296,7 @@ const StickerIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 function ChatInput() {
   const [isOpen, setIsOpen] = useState(false);
+  const [voiceIsOpen, setVoiceIsOpen] = useState(false);
   const [files, setFiles] = useState<File[]>([]);
   const [isFocused, setIsFocused] = useState(false);
 
@@ -391,7 +393,6 @@ function ChatInput() {
                       <div className="flex items-center justify-center h-9 w-9">
                         <GalleryIcon className="!h-5 !w-5 p-0 text-icon" />
                         <input
-                          aria-hidden
                           multiple
                           accept="image/*"
                           type="file"
@@ -402,9 +403,11 @@ function ChatInput() {
                       </div>
                     </label>
 
-                    <Button size="icon" type="button" variant="ghost">
-                      <SoundwaveIcon className="!h-5 !w-5 p-0 text-icon" />
-                    </Button>
+                    <Voice isOpen={voiceIsOpen} setIsOpen={setVoiceIsOpen}>
+                      <Button size="icon" type="button" variant="ghost">
+                        <SoundwaveIcon className="!h-5 !w-5 p-0 text-icon" />
+                      </Button>
+                    </Voice>
                     <motion.div whileTap={{ scale: 0.95 }}>
                       <Button
                         className="bg-linear-45 from-indigo-500 via-purple-500 to-pink-500 ml-2 h-8 w-8 rounded-full"
@@ -455,19 +458,19 @@ function ChatInput() {
         animate="show"
       >
         <motion.div variants={item}>
-          <Button className="rounded-full" size="sm" variant="secondary">
+          <Button className="rounded-lg" size="sm" variant="secondary">
             <StickerIcon />
             <span className="text-xs mr-1">Stickers</span>
           </Button>
         </motion.div>
         <motion.div variants={item}>
-          <Button className="rounded-full" size="sm" variant="secondary">
+          <Button className="rounded-lg" size="sm" variant="secondary">
             <SimileCircleIcon />
             <span className="text-xs mr-1">Emoji</span>
           </Button>
         </motion.div>
         <motion.div variants={item}>
-          <Button className="rounded-full" size="sm" variant="secondary">
+          <Button className="rounded-lg" size="sm" variant="secondary">
             <AttachmentIcon />
             <span className="text-xs mr-1">Other</span>
           </Button>

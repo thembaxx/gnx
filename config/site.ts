@@ -1,9 +1,9 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "NEXTDOT",
-  description: "The best chapter",
-  version: "0.0.0.1",
+  name: "GNX",
+  description: "Black Grand National!",
+  version: "0.0.0.3",
   navItems: [
     {
       label: "Home",
