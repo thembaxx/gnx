@@ -361,7 +361,7 @@ function ChatInput() {
                       <Textarea
                         placeholder="Type your message here"
                         className={cn(
-                          "resize-none text-base bg-transparent border-none shadow-none pt-3.5 h-full min-h-0 rounded-2xl focus-visible:ring-0 focus-visible:outline-0 pb-0 pr-10",
+                          "resize-none text-base bg-transparent border-none shadow-none rounded-none pt-3.5 h-full min-h-0 ring-0 dark:outline-none focus-visible:ring-0 focus-visible:outline-0 pb-0 pr-10",
                           {
                             "resize-y pr-0": isOpen,
                           }
@@ -387,7 +387,7 @@ function ChatInput() {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: 8 }}
                     transition={{ duration: 0.75, type: "spring" }}
-                    className="flex items-center grow"
+                    className="flex items-center grow gap-2"
                   >
                     <label htmlFor="file-upload">
                       <div className="flex items-center justify-center h-9 w-9">
@@ -410,7 +410,7 @@ function ChatInput() {
                     </Voice>
                     <motion.div whileTap={{ scale: 0.95 }}>
                       <Button
-                        className="bg-linear-45 from-indigo-500 via-purple-500 to-pink-500 ml-2 h-8 w-8 rounded-full"
+                        className="bg-linear-45 from-indigo-500 via-purple-500 to-pink-500 h-8 w-8 ml-2 rounded-full"
                         size="icon"
                         type="button"
                         variant="ghost"
@@ -431,9 +431,7 @@ function ChatInput() {
                   {!isOpen && (
                     <ExpandIcon className="!h-5 !w-5 p-0 text-icon" />
                   )}
-                  {isOpen && (
-                    <CompactIcon className="!h-5 !w-5 p-0 text-blue-600" />
-                  )}
+                  {isOpen && <CompactIcon className="!h-5 !w-5 p-0" />}
                 </Button>
                 <motion.div whileTap={{ scale: 0.95 }}>
                   <Button

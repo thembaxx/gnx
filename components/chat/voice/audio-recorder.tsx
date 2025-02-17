@@ -15,6 +15,7 @@ import { useReactMediaRecorder } from "react-media-recorder";
 import { Button } from "@/components/ui/button";
 import { useCallback, useEffect, useState } from "react";
 import WaveSurferPlayer from "./wave-player";
+import Image from "next/image";
 
 const LinkIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -282,6 +283,18 @@ const AudioRecorder: React.FC = () => {
                 <div className="absolute">
                   <PauseIcon />
                 </div>
+              </div>
+            )}
+            {status === "idle" && (
+              <div className="h-full flex flex-col justify-center items-center gap-4">
+                <Image
+                  src="stay-tuned.svg"
+                  alt=""
+                  height={150}
+                  width={150}
+                  className="opacity-90"
+                />
+                <p className="text-sm">Nothing recorded yet</p>
               </div>
             )}
           </div>

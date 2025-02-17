@@ -3,7 +3,7 @@ import React from "react";
 
 function ChatPage() {
   return (
-    <div className="h-full bg-off-white">
+    <div className="h-full">
       <Chat />
     </div>
   );

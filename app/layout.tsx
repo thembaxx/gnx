@@ -26,7 +26,7 @@ export default function RootLayout({
     <html suppressHydrationWarning lang="en">
       <body
         className={cn(
-          "antialiased selection:bg-blue-300 bg-background font-sans h-screen overflow-y-auto",
+          "antialiased selection:bg-blue-300 bg-background font-sans h-screen flex flex-col overflow-y-auto",
           fontSans.variable,
           fontSerif.variable
         )}
@@ -41,7 +41,7 @@ export default function RootLayout({
         >
           <>
             <Navbar />
-            <main>{children}</main>
+            <main className="grow">{children}</main>
           </>
         </Providers>
       </body>
