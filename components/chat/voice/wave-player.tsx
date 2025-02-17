@@ -22,7 +22,7 @@ const useWavesurfer = ({ containerRef, audioUrl }: useWavesurferProps) => {
       container: containerRef.current,
       cursorWidth: 0,
       barHeight: 2.5,
-      height: 256,
+      height: 192,
       waveColor: "#FFE1DE",
       progressColor: "#FE6250",
       barWidth: 2,

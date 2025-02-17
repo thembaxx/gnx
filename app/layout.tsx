@@ -5,6 +5,7 @@ import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { Providers } from "./providers";
 import Navbar from "@/components/nav-bar";
+import { ReactScan } from "@/components/react-scan";
 
 export const metadata: Metadata = {
   title: {
@@ -24,6 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html suppressHydrationWarning lang="en">
+      <ReactScan />
       <body
         className={cn(
           "antialiased selection:bg-blue-300 bg-background font-sans h-screen flex flex-col overflow-y-auto",
