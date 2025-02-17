@@ -17,7 +17,7 @@ const CanceIcon = (props: React.SVGProps<SVGSVGElement>) => (
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     color="currentColor"
-    fill={"none"}
+    fill="none"
     {...props}
   >
     <path
@@ -64,7 +64,7 @@ function Preview({ index, files, setIndex }: PreviewProps) {
         />
 
         <Button
-          className="rounded-full bg-black/60 backdrop-blur-sm absolute bottom-4 right-4 z-2 h-11 w-11"
+          className="rounded-full bg-black/60 backdrop-blur-sm absolute bottom-4 text-white right-4 z-2 h-11 w-11"
           size="icon"
           variant="outline"
           onClick={() => setIndex(-1)}
@@ -130,7 +130,7 @@ function Gallery({ files, onRemoveClick }: GalleryProps) {
                           style={{ objectFit: "cover" }}
                         />
                         <Button
-                          className="rounded-full bg-black/60 backdrop-blur-sm absolute bottom-0.5 right-0.5 z-2 h-6 w-6"
+                          className="rounded-full bg-black/60 backdrop-blur-sm absolute text-white bottom-0.5 right-0.5 z-2 h-6 w-6"
                           size="icon"
                           variant="outline"
                           onClick={() => onRemoveClick(index)}
