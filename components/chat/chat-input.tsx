@@ -18,6 +18,22 @@ const FormSchema = z.object({
   text: z.string(),
 });
 
+const container = {
+  hidden: { opacity: 0, x: 48 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, x: 16, scale: 0.8 },
+  show: { opacity: 1, x: 0, scale: 1 },
+};
+
 const AiIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     width="24"
@@ -40,6 +56,26 @@ const AiIcon = (props: React.SVGProps<SVGSVGElement>) => (
       clipRule="evenodd"
       d="M19 3.25C19.4142 3.25 19.75 3.58579 19.75 4V4.25H20C20.4142 4.25 20.75 4.58579 20.75 5C20.75 5.41421 20.4142 5.75 20 5.75H19.75V6C19.75 6.41421 19.4142 6.75 19 6.75C18.5858 6.75 18.25 6.41421 18.25 6V5.75H18C17.5858 5.75 17.25 5.41421 17.25 5C17.25 4.58579 17.5858 4.25 18 4.25H18.25V4C18.25 3.58579 18.5858 3.25 19 3.25Z"
       fill="currentColor"
+    />
+  </svg>
+);
+
+const AttachmentIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    width={24}
+    height={24}
+    color="currentColor"
+    fill={"none"}
+    {...props}
+  >
+    <path
+      d="M19.5 12.0001V13.5001C19.5 17.6422 16.1421 21.0001 12 21.0001C7.85786 21.0001 4.5 17.6422 4.5 13.5001V8C4.5 5.23858 6.73858 3 9.5 3C12.2614 3 14.5 5.23858 14.5 8V13.5C14.5 14.8807 13.3807 16 12 16C10.6193 16 9.5 14.8807 9.5 13.5V9.5"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -144,6 +180,31 @@ const SendIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+const SimileCircleIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    color="currentColor"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" />
+    <path
+      d="M9 16C9.85038 16.6303 10.8846 17 12 17C13.1154 17 14.1496 16.6303 15 16"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+    />
+    <path
+      d="M16 10.5C16 11.3284 15.5523 12 15 12C14.4477 12 14 11.3284 14 10.5C14 9.67157 14.4477 9 15 9C15.5523 9 16 9.67157 16 10.5Z"
+      fill="currentColor"
+    />
+    <ellipse cx="9" cy="10.5" rx="1" ry="1.5" fill="currentColor" />
+  </svg>
+);
+
 const SoundwaveIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     width="24"
@@ -187,50 +248,50 @@ const SoundwaveIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-// const StickerIcon = (props: React.SVGProps<SVGSVGElement>) => (
-//   <svg
-//     width="24"
-//     height="24"
-//     viewBox="0 0 24 24"
-//     color="currentColor"
-//     fill="none"
-//     xmlns="http://www.w3.org/2000/svg"
-//     {...props}
-//   >
-//     <path
-//       d="M2 12C2 17.5228 6.47715 22 12 22C12.6477 22 13.2503 21.7004 13.7083 21.2424L21.2424 13.7083C21.7004 13.2503 22 12.6477 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12Z"
-//       stroke="currentColor"
-//       strokeWidth="1.5"
-//     />
-//     <path
-//       d="M8.9126 15.9336C9.94668 16.1928 11.0951 16.2391 12.2688 16.0337"
-//       stroke="currentColor"
-//       strokeWidth="1.5"
-//       strokeLinecap="round"
-//     />
-//     <ellipse
-//       cx="14.5094"
-//       cy="9.77405"
-//       rx="1"
-//       ry="1.5"
-//       transform="rotate(-15 14.5094 9.77405)"
-//       fill="currentColor"
-//     />
-//     <ellipse
-//       cx="8.71402"
-//       cy="11.3278"
-//       rx="1"
-//       ry="1.5"
-//       transform="rotate(-15 8.71402 11.3278)"
-//       fill="currentColor"
-//     />
-//     <path
-//       d="M12 22C12 19.2071 12 17.8107 12.3928 16.688C13.0964 14.6773 14.6773 13.0964 16.688 12.3928C17.8107 12 19.2071 12 22 12"
-//       stroke="currentColor"
-//       strokeWidth="1.5"
-//     />
-//   </svg>
-// );
+const StickerIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    color="currentColor"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      d="M2 12C2 17.5228 6.47715 22 12 22C12.6477 22 13.2503 21.7004 13.7083 21.2424L21.2424 13.7083C21.7004 13.2503 22 12.6477 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12Z"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    />
+    <path
+      d="M8.9126 15.9336C9.94668 16.1928 11.0951 16.2391 12.2688 16.0337"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+    />
+    <ellipse
+      cx="14.5094"
+      cy="9.77405"
+      rx="1"
+      ry="1.5"
+      transform="rotate(-15 14.5094 9.77405)"
+      fill="currentColor"
+    />
+    <ellipse
+      cx="8.71402"
+      cy="11.3278"
+      rx="1"
+      ry="1.5"
+      transform="rotate(-15 8.71402 11.3278)"
+      fill="currentColor"
+    />
+    <path
+      d="M12 22C12 19.2071 12 17.8107 12.3928 16.688C13.0964 14.6773 14.6773 13.0964 16.688 12.3928C17.8107 12 19.2071 12 22 12"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    />
+  </svg>
+);
 
 function ChatInput() {
   const [isOpen, setIsOpen] = useState(false);
@@ -386,6 +447,31 @@ function ChatInput() {
             </motion.div>
           </motion.form>
         </Form>
+      </motion.div>
+      <motion.div
+        className="flex items-center gap-2"
+        variants={container}
+        initial="hidden"
+        animate="show"
+      >
+        <motion.div variants={item}>
+          <Button className="rounded-full" size="sm" variant="secondary">
+            <StickerIcon />
+            <span className="text-xs mr-1">Stickers</span>
+          </Button>
+        </motion.div>
+        <motion.div variants={item}>
+          <Button className="rounded-full" size="sm" variant="secondary">
+            <SimileCircleIcon />
+            <span className="text-xs mr-1">Emoji</span>
+          </Button>
+        </motion.div>
+        <motion.div variants={item}>
+          <Button className="rounded-full" size="sm" variant="secondary">
+            <AttachmentIcon />
+            <span className="text-xs mr-1">Other</span>
+          </Button>
+        </motion.div>
       </motion.div>
     </div>
   );
