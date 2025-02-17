@@ -144,8 +144,8 @@ const AudioRecorder: React.FC = () => {
   const [minute, setMinute] = useState<string | number>("00");
   const [counter, setCounter] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [currentTime, setCurrentTime] = useState("00:");
-  const [duration, setDuration] = useState("00");
+  const [currentTime, setCurrentTime] = useState("00:00");
+  const [duration, setDuration] = useState("00:00");
   const [playbackState, setPlaybackState] = useState<"play" | "pause">("pause");
 
   const {
@@ -190,8 +190,8 @@ const AudioRecorder: React.FC = () => {
 
   const stopTimer = useCallback(() => {
     setCounter(0);
-    setSecond("00");
-    setMinute("00");
+    // setSecond("00");
+    // setMinute("00");
   }, []);
 
   const onButtonClick = () => {
@@ -206,9 +206,9 @@ const AudioRecorder: React.FC = () => {
   };
 
   return (
-    <div className="h-full w-full flex flex-col py-4">
+    <div className="h-full w-full flex flex-col pt-4">
       <div className="grow">
-        <div className="bg-secondary/40 backdrop-blur-2xl flex flex-col h-full rounded-2xl p-2">
+        <div className="bg-secondary/40 backdrop-blur-2xl flex flex-col h-full rounded-2xl p-1">
           {!error && (
             <div className="flex items-center justify-center gap-2 py-2">
               <div
@@ -253,7 +253,7 @@ const AudioRecorder: React.FC = () => {
               </div>
             </div>
           )}
-          <div className="grow flex flex-col items-center relative bg-black/20 rounded-xl mt-2">
+          <div className="grow flex flex-col w-full items-center relative bg-black/20 rounded-xl mt-2">
             {mediaBlobUrl && (
               <div className="w-full my-auto">
                 <div className="h-full">
@@ -268,16 +268,16 @@ const AudioRecorder: React.FC = () => {
               </div>
             )}
             {status === "recording" && (
-              <div className="h-full relative flex items-center justify-center">
+              <div className="h-full w-full relative flex items-center justify-center">
                 <Wave
                   fill="#FF8C82"
                   paused={false}
-                  className="h-full"
+                  className="h-[80%] w-full"
                   style={{ display: "flex" }}
                   options={{
                     amplitude: 20,
-                    speed: 0.15,
-                    points: 3,
+                    speed: 0.35,
+                    points: 4,
                   }}
                 />
                 <div className="absolute">
@@ -301,7 +301,7 @@ const AudioRecorder: React.FC = () => {
         </div>
       </div>
       <div className="flex flex-col items-center">
-        <div className="pb-6 pt-4 px-4 w-full text-base flex justify-between text-secondary-foreground/80 font-mono">
+        <div className="pb-12 pt-4 px-4 w-full text-base flex justify-between text-secondary-foreground/80 font-mono">
           <p
             className={cn("truncate ", {
               "opacity-30": !!error,
@@ -312,7 +312,8 @@ const AudioRecorder: React.FC = () => {
 
           <p
             className={cn(" truncate", {
-              "opacity-30": !!error || status === "recording",
+              "opacity-30":
+                !!error || status === "recording" || status === "idle",
             })}
           >
             <span>{currentTime}</span>
@@ -355,8 +356,10 @@ const AudioRecorder: React.FC = () => {
                 <RecordIcon className="!h-6 !w-6 text-red-500" />
               )}
               {status === "stopped" && <PlayIcon className="!h-6 !w-6" />}
+              {status === "stopped" && isPlaying && (
+                <PauseIcon className="!h-6 !w-6" />
+              )}
               {status === "recording" && <StopIcon className="!h-6 !w-6" />}
-              {mediaBlobUrl && isPlaying && <PauseIcon className="!h-6 !w-6" />}
             </Button>
           </motion.div>
           <Button

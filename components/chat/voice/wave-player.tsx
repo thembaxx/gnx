@@ -1,46 +1,8 @@
 "use client";
 
-import { useRef, useState, useEffect, RefObject } from "react";
+import { useRef, useEffect } from "react";
 
-import WaveSurfer from "wavesurfer.js";
-
-// WaveSurfer hook
-interface useWavesurferProps {
-  audioUrl: string;
-  containerRef: RefObject<HTMLDivElement | null>;
-}
-
-const useWavesurfer = ({ containerRef, audioUrl }: useWavesurferProps) => {
-  const [wavesurfer, setWavesurfer] = useState<WaveSurfer | null>(null);
-
-  useEffect(() => {
-    if (!containerRef.current || !audioUrl) return;
-
-    const props = { url: audioUrl };
-
-    const ws = WaveSurfer.create({
-      container: containerRef.current,
-      cursorWidth: 0,
-      barHeight: 2.5,
-      height: 192,
-      waveColor: "#FFE1DE",
-      progressColor: "#FE6250",
-      barWidth: 2,
-      barGap: 6,
-      barRadius: 16,
-      ...props,
-    });
-
-    setWavesurfer(ws);
-
-    return () => {
-      ws.destroy();
-      URL.revokeObjectURL(audioUrl);
-    };
-  }, [audioUrl, containerRef]);
-
-  return wavesurfer;
-};
+import { useWavesurfer } from "@wavesurfer/react";
 
 type Props = {
   audioUrl: string;
@@ -58,13 +20,26 @@ const WaveSurferPlayer = ({
   setIsPlaying,
 }: Props) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const wavesurfer = useWavesurfer({ containerRef, audioUrl });
+
+  const props = { url: audioUrl };
+
+  const { wavesurfer } = useWavesurfer({
+    container: containerRef,
+    cursorWidth: 0,
+    barHeight: 2.5,
+    height: 192,
+    waveColor: "#FFE1DE",
+    progressColor: "#FE6250",
+    barWidth: 2,
+    barGap: 6,
+    barRadius: 16,
+    ...props,
+  });
 
   useEffect(() => {
     const x = async () => {
       try {
         if (!wavesurfer) return;
-
         await wavesurfer.playPause();
       } catch (e) {
         console.log(e);
@@ -72,7 +47,7 @@ const WaveSurferPlayer = ({
     };
 
     x();
-  }, [playbackState]);
+  }, [playbackState, wavesurfer]);
 
   useEffect(() => {
     if (!wavesurfer) return;
