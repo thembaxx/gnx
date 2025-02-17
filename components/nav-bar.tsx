@@ -1,11 +1,21 @@
+"use client";
+
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 import ThemeToggle from "./theme-toggle";
 import { Button } from "./ui/button";
 import { siteConfig } from "@/config/site";
+
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 const Github = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -49,12 +59,25 @@ const MenuIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 function Navbar() {
+  const [menuIsOpen, setIsMenuOpen] = useState(false);
+
   return (
-    <nav className="w-full h-16 flex items-center px-6 sticky top-0 bg-background/80 backdrop-blur-xl">
+    <nav className="w-full h-16 flex items-center px-6 sticky top-0 z-20 bg-background/80 backdrop-blur-xl">
       <div className="grow flex items-center">
-        <Button className="p-0" size="icon" variant="ghost">
-          <MenuIcon className="!h-6 !w-6" />
-        </Button>
+        <Sheet open={menuIsOpen} onOpenChange={setIsMenuOpen}>
+          <SheetTrigger asChild>
+            <Button className="p-0" size="icon" variant="ghost">
+              <MenuIcon className="!h-6 !w-6" />
+            </Button>
+          </SheetTrigger>
+
+          <SheetContent side="left">
+            <SheetHeader>
+              <SheetTitle>{siteConfig.name}</SheetTitle>
+            </SheetHeader>
+          </SheetContent>
+        </Sheet>
+
         <Link href="/" className="text-xs">
           <span className="font-extrabold text-sm uppercase">GNX</span> ©
         </Link>
