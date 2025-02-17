@@ -1,3 +1,5 @@
+import { motion } from "motion/react";
+
 import {
   Carousel,
   CarouselContent,
@@ -41,31 +43,32 @@ function Gallery({ files, onRemoveClick }: GalleryProps) {
         className="w-full max-w-sm py-2"
       >
         <CarouselContent className="gap-1.5 m-0 ">
-          {files.map((file, index) => (
-            <CarouselItem
-              key={index}
-              className="basis-auto p-0 h-16 w-16 border rounded-xl overflow-hidden"
-            >
-              <div className="h-full w-full shrink-0 relative">
-                <Image
-                  src={URL.createObjectURL(file)}
-                  alt=""
-                  height={64}
-                  width={64}
-                  className="shrink-0 min-h-full"
-                  style={{ objectFit: "cover" }}
-                />
-                <Button
-                  className="rounded-full bg-black/60 backdrop-blur-sm absolute bottom-0.5 right-0.5 z-2 h-6 w-6"
-                  size="icon"
-                  variant="outline"
-                  onClick={() => onRemoveClick(index)}
-                >
-                  <CanceIcon className="!h-3 !w-3" />
-                </Button>
-              </div>
-            </CarouselItem>
-          ))}
+          <ul className="flex gap-2">
+            {files.map((file, index) => (
+              <motion.li layout key={index} transition={spring}>
+                <CarouselItem className="basis-auto p-0 h-16 w-16 border rounded-xl overflow-hidden">
+                  <div className="h-full w-full shrink-0 relative">
+                    <Image
+                      src={URL.createObjectURL(file)}
+                      alt=""
+                      height={64}
+                      width={64}
+                      className="shrink-0 min-h-full"
+                      style={{ objectFit: "cover" }}
+                    />
+                    <Button
+                      className="rounded-full bg-black/60 backdrop-blur-sm absolute bottom-0.5 right-0.5 z-2 h-6 w-6"
+                      size="icon"
+                      variant="outline"
+                      onClick={() => onRemoveClick(index)}
+                    >
+                      <CanceIcon className="!h-3 !w-3" />
+                    </Button>
+                  </div>
+                </CarouselItem>
+              </motion.li>
+            ))}
+          </ul>
         </CarouselContent>
         <CarouselPrevious />
         <CarouselNext />
@@ -73,5 +76,11 @@ function Gallery({ files, onRemoveClick }: GalleryProps) {
     </div>
   );
 }
+
+const spring = {
+  type: "spring",
+  damping: 20,
+  stiffness: 300,
+};
 
 export default Gallery;
