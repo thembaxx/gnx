@@ -21,8 +21,7 @@ export const getUrlMeta = async (url: string) => {
       {
         headers: {
           mode: "cors",
-          Authorization:
-            "Basic cGFyYWxpc3RpY0BnbWFpbC5jb206TE9wVXdDbmhuSTZYY1B4VlNtRnI=",
+          Authorization: `Basic ${process.env.AUTH_URL_META as string}`,
         },
       }
     );
