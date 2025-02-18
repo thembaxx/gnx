@@ -205,6 +205,8 @@ const AudioRecorder: React.FC = () => {
     }
   };
 
+  console.log(status);
+
   return (
     <div className="h-full w-full flex flex-col pt-4">
       <div className="grow">
@@ -355,7 +357,9 @@ const AudioRecorder: React.FC = () => {
               {status === "idle" && (
                 <RecordIcon className="!h-6 !w-6 text-red-500" />
               )}
-              {status === "stopped" && <PlayIcon className="!h-6 !w-6" />}
+              {status === "stopped" && !isPlaying && (
+                <PlayIcon className="!h-6 !w-6" />
+              )}
               {status === "stopped" && isPlaying && (
                 <PauseIcon className="!h-6 !w-6" />
               )}
