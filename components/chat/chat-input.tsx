@@ -455,19 +455,19 @@ function ChatInput() {
         initial="hidden"
         animate="show"
       >
-        <motion.div variants={item}>
+        <motion.div variants={item} whileTap={{ scale: 0.9 }}>
           <Button className="rounded-lg" size="sm" variant="secondary">
             <StickerIcon />
             <span className="text-xs mr-1">Stickers</span>
           </Button>
         </motion.div>
-        <motion.div variants={item}>
+        <motion.div variants={item} whileTap={{ scale: 0.9 }}>
           <Button className="rounded-lg" size="sm" variant="secondary">
             <SimileCircleIcon />
             <span className="text-xs mr-1">Emoji</span>
           </Button>
         </motion.div>
-        <motion.div variants={item}>
+        <motion.div variants={item} whileTap={{ scale: 0.9 }}>
           <Button className="rounded-lg" size="sm" variant="secondary">
             <AttachmentIcon />
             <span className="text-xs mr-1">Other</span>

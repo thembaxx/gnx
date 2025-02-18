@@ -272,7 +272,7 @@ const AudioRecorder: React.FC = () => {
                 <Wave
                   fill="#FF8C82"
                   paused={false}
-                  className="h-[80%] w-full"
+                  className="h-full w-full"
                   style={{ display: "flex" }}
                   options={{
                     amplitude: 20,
