@@ -20,6 +20,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { Spinner } from "../ui/spinner";
+import { getJsonLinkMeta, getUrlMeta } from "@/lib/api";
 
 const GalleryBoldIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -108,6 +109,7 @@ function AddBookmark() {
   const [isFocused, setIsFocused] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [iconSrc, setIconSrc] = useState<string | null>(null);
+  const [test, setTest] = useState("");
   const [data, setData] = useState<
     | {
         description: string;
@@ -145,11 +147,12 @@ function AddBookmark() {
       setIconSrc(URL.createObjectURL(resp.data));
     }
 
-    const res = await axios.get(
-      `https://jsonlink.io/api/extract?api_key=${"pk_52c60789c9555f458ac93583e430f60f3c91ae99"}&url=${url}`
-    );
-
+    const res = await getJsonLinkMeta(url);
     setData(res?.data);
+
+    const res2 = await getUrlMeta(url);
+    setTest(res2 ?? "");
+    //    const { title, description, keywords } = res.data.meta;
 
     setIsProcessing(false);
   }
@@ -158,7 +161,7 @@ function AddBookmark() {
     <div className="space-y-4">
       <div
         className={cn(
-          "bg-[#242629] rounded-2xl py min-h-24 aspect-square w-full shadow-2xl",
+          "bg-[#141414] rounded-2xl py min-h-24 aspect-square w-full shadow-2xl",
           {
             "animate-pulse": isProcessing,
           }
@@ -239,7 +242,7 @@ function AddBookmark() {
                   >
                     <Input
                       className="h-full rounded-lg text-base pl-4 pr-14 truncate border-none ring-0"
-                      placeholder="eg. www.office.com"
+                      placeholder="eg. office.com"
                       {...field}
                       disabled={isProcessing}
                       onFocus={() => setIsFocused(true)}
@@ -266,6 +269,7 @@ function AddBookmark() {
           />
         </form>
       </Form>
+      <div>{test}</div>
     </div>
   );
 }
