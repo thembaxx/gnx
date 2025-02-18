@@ -225,7 +225,7 @@ function Navbar() {
               <div className="py-8 px-4 space-y-6">
                 <Link
                   href="/settings"
-                  className="flex items-center h-9 pr-8 rounded-[10px] bg-[#2f3133]"
+                  className="flex items-center h-9 pr-8 rounded-[10px] dark:hover:bg-[#2f3133]"
                 >
                   <div className="h-9 w-9 flex items-center justify-center">
                     <SettingsIcon className="text-icon h-5 w-5" />
