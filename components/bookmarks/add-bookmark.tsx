@@ -165,19 +165,6 @@ function AddBookmark() {
     setData(res?.data);
 
     setIsProcessing(false);
-
-    //     {
-    //     "title": "Sign in to your Microsoft account",
-    //     "description": "",
-    //     "images": [],
-    //     "sitename": [
-    //         "Sign in to your Microsoft account"
-    //     ],
-    //     "favicon": "https://logincdn.msauth.net/16.000.30507.5/images/favicon.ico",
-    //     "duration": 342,
-    //     "domain": "www.office.com",
-    //     "url": "https://www.office.com/?auth=1"
-    // }
   }
 
   return (
@@ -192,30 +179,34 @@ function AddBookmark() {
       >
         {iconSrc && (
           <div className="flex items-center justify-center h-full w-full">
-            <div className="p-4 rounded-2xl gap-12 w-full flex flex-col text-center items-center">
-              <Image
-                src={iconSrc}
-                alt=""
-                height={48}
-                width={48}
-                style={{ objectFit: "contain" }}
-              />
-              <div>
+            <div className="p-4 rounded-2xl gap-12 w-full h-full flex flex-col text-center items-center relative">
+              <div className="absolute top-0 left-0 m-6">
+                <Image
+                  src={iconSrc}
+                  alt=""
+                  height={36}
+                  width={36}
+                  style={{ objectFit: "contain" }}
+                />
+              </div>
+              <div className="mt-auto px-2 pb-2">
                 {data && (
-                  <div className="text-left space-y-4">
-                    <p className="text-xs">{data.domain}</p>
-                    <div className="flex items-center space-x-4">
-                      <Image
-                        src={data.favicon}
-                        alt=""
-                        height={36}
-                        width={36}
-                        style={{ objectFit: "contain" }}
-                      />
-                      <div>
-                        <p className="text-sm">{data.title}</p>
-                        <p className="text-xs opacity-70">{data.url}</p>
+                  <div className="text-left space-y-6">
+                    <p className="text-sm font-medium text-blue-500">
+                      {data.domain}
+                    </p>
+                    <div className="space-y-4">
+                      <div className="space-y-1.5">
+                        <p className="text-base font-semibold text-pretty">
+                          {data.title}
+                        </p>
+                        <p className="text-xs opacity-80 underline">
+                          {data.url}
+                        </p>
                       </div>
+                      <p className="text-sm leading-6 opacity-90">
+                        {data.description}
+                      </p>
                     </div>
                   </div>
                 )}

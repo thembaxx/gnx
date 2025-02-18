@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
         hostname: "logincdn.msauth.net",
         pathname: "**",
       },
+      {
+        protocol: "https",
+        hostname: "framerusercontent.com",
+        pathname: "**",
+      },
     ],
   },
 };
