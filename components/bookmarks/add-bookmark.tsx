@@ -158,7 +158,7 @@ function AddBookmark() {
     <div className="space-y-4">
       <div
         className={cn(
-          "bg-[#242629] rounded-2xl py min-h-24 aspect-square w-full",
+          "bg-[#242629] rounded-2xl py min-h-24 aspect-square w-full shadow-2xl",
           {
             "animate-pulse": isProcessing,
           }
