@@ -213,6 +213,12 @@ function Navbar() {
                   <NavItem key={index} {...navItem} onClick={handleClick} />
                 ))}
               </div>
+              <div className="px-6 py-4">
+                <p className="text-[11px] text-muted-foreground">
+                  {siteConfig.name} © <>{new Date().getFullYear()}</>{" "}
+                  {` v${siteConfig.version}`}
+                </p>
+              </div>
               <Separator />
               <div className="py-8 px-4 space-y-6">
                 <Link
