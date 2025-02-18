@@ -82,6 +82,31 @@ const GalleryBoldIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+const LinkIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    width={24}
+    height={24}
+    color="currentColor"
+    fill={"none"}
+    {...props}
+  >
+    <path
+      d="M9.5 14.5L14.5 9.49995"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+    <path
+      d="M16.8463 14.6095L19.4558 12C21.5147 9.94108 21.5147 6.60298 19.4558 4.54411C17.397 2.48524 14.0589 2.48524 12 4.54411L9.39045 7.15366M14.6095 16.8463L12 19.4558C9.94113 21.5147 6.60303 21.5147 4.54416 19.4558C2.48528 17.3969 2.48528 14.0588 4.54416 12L7.1537 9.39041"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+  </svg>
+);
+
 const SearchIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -192,19 +217,30 @@ function AddBookmark() {
               <div className="mt-auto px-2 pb-2">
                 {data && (
                   <div className="text-left space-y-6">
-                    <p className="text-sm font-medium text-blue-500">
-                      {data.domain}
-                    </p>
+                    {data.domain && (
+                      <div>
+                        <a
+                          href="https://support.mozilla.org/en-US/kb/how-manage-your-camera-and-microphone-permissions"
+                          className="items-center text-blue-500 flex space-x-1.5 w-full"
+                          target="_blank"
+                        >
+                          <LinkIcon className="h-3 w-3 shrink-0 mt-px" />
+                          <p className="text-sm font-medium truncate">
+                            {data.domain}
+                          </p>
+                        </a>
+                      </div>
+                    )}
                     <div className="space-y-4">
                       <div className="space-y-1.5">
-                        <p className="text-base font-semibold text-pretty">
+                        <p className="text-base font-semibold text-pretty line-clamp-2">
                           {data.title}
                         </p>
                         <p className="text-xs opacity-80 underline">
                           {data.url}
                         </p>
                       </div>
-                      <p className="text-sm leading-6 opacity-90">
+                      <p className="text-sm leading-6 text-pretty line-clamp-4 opacity-90">
                         {data.description}
                       </p>
                     </div>
@@ -239,12 +275,9 @@ function AddBookmark() {
                       }
                     )}
                   >
-                    <label className="absolute left-0 h-full flex items-center px-3 bg-secondary/60">
-                      <BrowserIcon className="text-icon h-5 w-5" />
-                    </label>
                     <Input
-                      className="h-full rounded-lg text-base pl-14 pr-14 truncate border-none ring-0"
-                      placeholder="example.com"
+                      className="h-full rounded-lg text-base pl-4 pr-14 truncate border-none ring-0"
+                      placeholder="eg. www.office.com"
                       {...field}
                       disabled={isProcessing}
                       onFocus={() => setIsFocused(true)}

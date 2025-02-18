@@ -190,8 +190,6 @@ const AudioRecorder: React.FC = () => {
 
   const stopTimer = useCallback(() => {
     setCounter(0);
-    // setSecond("00");
-    // setMinute("00");
   }, []);
 
   const onButtonClick = () => {
@@ -204,8 +202,6 @@ const AudioRecorder: React.FC = () => {
       else setPlaybackState("pause");
     }
   };
-
-  console.log(status);
 
   return (
     <div className="h-full w-full flex flex-col pt-4">
