@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ai-sdk/deepseek": "^0.1.10",
+    "@ai-sdk/openai": "^1.1.12",
+    "@ai-sdk/react": "^1.1.16",
     "@hookform/resolvers": "^4.1.0",
     "@radix-ui/react-avatar": "^1.1.3",
     "@radix-ui/react-dialog": "^1.1.6",
@@ -18,6 +21,8 @@
     "@radix-ui/react-slot": "^1.1.2",
     "@wavesurfer/react": "^1.0.9",
     "ably": "^2.6.3",
+    "ai": "^4.1.41",
+    "axios": "^1.7.9",
     "better-auth": "^1.1.18",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

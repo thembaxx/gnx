@@ -22,31 +22,23 @@ interface NavItemProps {
   Icon: ReactNode;
   title: string;
   href: string;
+  onClick?: () => void;
 }
 
 const BookmarkIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
-    width={24}
-    height={24}
+    width="24"
+    height="24"
     color="currentColor"
-    fill={"none"}
+    fill="none"
     {...props}
   >
     <path
-      d="M12 22.0002C7.75736 22.0002 5.63604 22.0002 4.31802 20.5358C3 19.0713 3 16.7143 3 12.0002C3 7.28617 3 4.92915 4.31802 3.46468C5.63604 2.00022 7.75736 2.00022 12 2.00022C16.2426 2.00022 18.364 2.00022 19.682 3.46468C21 4.92915 21 7.28617 21 12.0002C21 16.7143 21 19.0713 19.682 20.5358C18.364 22.0002 16.2426 22.0002 12 22.0002Z"
+      d="M13 4H6.23456C3.79424 4 2.57407 4 2.14438 4.76649C2.13129 4.78984 2.11883 4.81353 2.10701 4.83754C1.71893 5.62592 2.41032 6.63129 3.7931 8.64204C4.89612 10.246 5.44763 11.048 5.4611 11.9555C5.46154 11.9852 5.46154 12.0148 5.4611 12.0445C5.44763 12.952 4.89612 13.754 3.7931 15.358C2.41032 17.3687 1.71893 18.3741 2.10701 19.1625C2.11883 19.1865 2.13129 19.2102 2.14438 19.2335C2.57407 20 3.79424 20 6.23456 20H13C14.9628 20 15.9443 20 16.7889 19.5777C17.6334 19.1554 18.2223 18.3703 19.4 16.8C21.1333 14.4889 22 13.3333 22 12C22 10.6667 21.1333 9.51111 19.4 7.2C18.2223 5.62972 17.6334 4.84458 16.7889 4.42229C15.9443 4 14.9628 4 13 4Z"
       stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M8 2.5V9.82621C8 11.0733 8 11.6969 8.38642 11.9201C9.13473 12.3523 10.5384 10.9103 11.205 10.4761C11.5916 10.2243 11.7849 10.0984 12 10.0984C12.2151 10.0984 12.4084 10.2243 12.795 10.4761C13.4616 10.9103 14.8653 12.3523 15.6136 11.9201C16 11.6969 16 11.0733 16 9.82621V2.5"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      strokeWidth="2"
     />
   </svg>
 );
@@ -69,22 +61,29 @@ const HomeIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
-    width={24}
-    height={24}
+    width="24"
+    height="24"
     color="currentColor"
-    fill={"none"}
+    fill="none"
     {...props}
   >
     <path
-      d="M8.9995 22L8.74887 18.4911C8.61412 16.6046 10.1082 15 11.9995 15C13.8908 15 15.3849 16.6046 15.2501 18.4911L14.9995 22"
+      d="M12 17H12.009"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M20 8.5V13.5C20 17.2712 20 19.1569 18.8284 20.3284C17.6569 21.5 15.7712 21.5 12 21.5C8.22876 21.5 6.34315 21.5 5.17157 20.3284C4 19.1569 4 17.2712 4 13.5V8.5"
       stroke="currentColor"
       strokeWidth="2"
     />
     <path
-      d="M2.35157 13.2135C1.99855 10.9162 1.82204 9.76763 2.25635 8.74938C2.69065 7.73112 3.65421 7.03443 5.58132 5.64106L7.02117 4.6C9.41847 2.86667 10.6171 2 12.0002 2C13.3832 2 14.5819 2.86667 16.9792 4.6L18.419 5.64106C20.3462 7.03443 21.3097 7.73112 21.744 8.74938C22.1783 9.76763 22.0018 10.9162 21.6488 13.2135L21.3478 15.1724C20.8473 18.4289 20.5971 20.0572 19.4292 21.0286C18.2613 22 16.5538 22 13.139 22H10.8614C7.44652 22 5.73909 22 4.57118 21.0286C3.40327 20.0572 3.15305 18.4289 2.65261 15.1724L2.35157 13.2135Z"
+      d="M22 10.5L17.6569 6.33548C14.9902 3.77849 13.6569 2.5 12 2.5C10.3431 2.5 9.00981 3.77849 6.34315 6.33548L2 10.5"
       stroke="currentColor"
       strokeWidth="2"
-      strokeLinejoin="round"
+      strokeLinecap="round"
     />
   </svg>
 );
@@ -119,26 +118,14 @@ const MenuIcon = (props: React.SVGProps<SVGSVGElement>) => (
 const MessageIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    width={24}
-    height={24}
+    width="52"
+    height="52"
     color="currentColor"
-    fill={"none"}
+    fill="currentColor"
+    viewBox="0 0 256 256"
     {...props}
   >
-    <path
-      d="M14.1706 20.8905C18.3536 20.6125 21.6856 17.2332 21.9598 12.9909C22.0134 12.1607 22.0134 11.3009 21.9598 10.4707C21.6856 6.22838 18.3536 2.84913 14.1706 2.57107C12.7435 2.47621 11.2536 2.47641 9.8294 2.57107C5.64639 2.84913 2.31441 6.22838 2.04024 10.4707C1.98659 11.3009 1.98659 12.1607 2.04024 12.9909C2.1401 14.536 2.82343 15.9666 3.62791 17.1746C4.09501 18.0203 3.78674 19.0758 3.30021 19.9978C2.94941 20.6626 2.77401 20.995 2.91484 21.2351C3.05568 21.4752 3.37026 21.4829 3.99943 21.4982C5.24367 21.5285 6.08268 21.1757 6.74868 20.6846C7.1264 20.4061 7.31527 20.2668 7.44544 20.2508C7.5756 20.2348 7.83177 20.3403 8.34401 20.5513C8.8044 20.7409 9.33896 20.8579 9.8294 20.8905C11.2536 20.9852 12.7435 20.9854 14.1706 20.8905Z"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M11.9953 12H12.0043M15.9908 12H15.9998M7.99982 12H8.00879"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+    <path d="M132,24A100.11,100.11,0,0,0,32,124v84a16,16,0,0,0,16,16h84a100,100,0,0,0,0-200Zm0,184H48V124a84,84,0,1,1,84,84Z"></path>
   </svg>
 );
 
@@ -186,10 +173,11 @@ const navItems: NavItemProps[] = [
   },
 ];
 
-const NavItem = ({ Icon, title, href }: NavItemProps) => (
+const NavItem = ({ Icon, title, href, onClick }: NavItemProps) => (
   <Link
     href={href}
     className="flex items-center h-9 pr-8 rounded-[10px] dark:hover:bg-[#2f3133]"
+    onClick={onClick}
   >
     <div className="h-9 w-9 flex items-center justify-center">{Icon}</div>
     <p className="text-sm font-medium opacity-90">{title}</p>
@@ -198,6 +186,10 @@ const NavItem = ({ Icon, title, href }: NavItemProps) => (
 
 function Navbar() {
   const [menuIsOpen, setIsMenuOpen] = useState(false);
+
+  const handleClick = () => {
+    setIsMenuOpen(false);
+  };
 
   return (
     <nav className="w-full h-16 flex items-center px-6 sticky top-0 z-20 bg-background/80 backdrop-blur-xl">
@@ -218,7 +210,7 @@ function Navbar() {
             <div className="grow flex flex-col">
               <div className="grow py-6 space-y-2 px-4">
                 {navItems.map((navItem, index) => (
-                  <NavItem key={index} {...navItem} />
+                  <NavItem key={index} {...navItem} onClick={handleClick} />
                 ))}
               </div>
               <Separator />
