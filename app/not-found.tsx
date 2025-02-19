@@ -25,7 +25,7 @@ export default function NotFound() {
         <p>
           Head back to the{" "}
           <Link href="/" className="underline">
-            Home
+            home
           </Link>
         </p>
       </div>
