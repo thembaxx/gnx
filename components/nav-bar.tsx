@@ -20,6 +20,7 @@ import {
 import { Separator } from "./ui/separator";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import ThemeSwitcher from "./theme-switcher";
 
 interface NavItemProps {
   Icon: ReactNode;
@@ -350,12 +351,12 @@ function Navbar() {
           </SheetTrigger>
 
           <SheetContent side="left" className="dark:bg-[#1a1c1e]">
-            <SheetHeader className="h-16 w-full flex flex-row items-center space-x-1 justify-start pl-6">
+            <SheetHeader className="h-16 w-full flex flex-row items-center space-x-0 justify-start pl-6">
               <div>
                 <Image src="/gnx.svg" height={20} width={20} alt="" />
               </div>
               <SheetTitle className="text-sm text-left">
-                {siteConfig.name} <span className="text-xs">©</span>
+                {siteConfig.name} <span className="text-xs font-normal">©</span>
               </SheetTitle>
             </SheetHeader>
             <div className="grow flex flex-col pt-8">
@@ -370,6 +371,7 @@ function Navbar() {
                 ))}
               </div>
               <div className="px-6 py-4 space-y-3">
+                <ThemeSwitcher />
                 <div className="flex items-center py-6 -ml-[11px]">
                   <div className="flex items-center justify-center h-11 w-11">
                     <GithubIcon className="h-5 w-5 text-icon" />
