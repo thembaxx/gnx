@@ -43,7 +43,7 @@ export default function RootLayout({
         >
           <>
             <Navbar />
-            <main className="grow overflow-hidden">{children}</main>
+            <main className="grow ">{children}</main>
           </>
         </Providers>
       </body>
