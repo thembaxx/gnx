@@ -48,6 +48,7 @@ export const siteConfig = {
     github: "https://github.com/thembaxx",
     twitter: "https://twitter.com/thembaxx",
     discord: "https://discord.gg/thembax",
+    linkedIn: "https://www.linkedin.com/in/themba_[",
   },
   profile: {
     name: "Themba Mndebele",
