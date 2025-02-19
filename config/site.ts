@@ -3,7 +3,7 @@ export type SiteConfig = typeof siteConfig;
 export const siteConfig = {
   name: "GNX",
   description: "Black Grand National!",
-  version: "0.0.0.38",
+  version: "0.0.0.39",
   navItems: [
     {
       label: "Home",
@@ -46,10 +46,8 @@ export const siteConfig = {
   ],
   links: {
     github: "https://github.com/thembaxx",
-    twitter: "https://twitter.com/hero_ui",
-    docs: "https://heroui.com",
-    discord: "https://discord.gg/9b6yyZKmH4",
-    sponsor: "https://patreon.com/jrgarciadev",
+    twitter: "https://twitter.com/thembaxx",
+    discord: "https://discord.gg/thembax",
   },
   profile: {
     name: "Themba Mndebele",

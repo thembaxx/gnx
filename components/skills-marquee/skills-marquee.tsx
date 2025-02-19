@@ -155,13 +155,17 @@ function SkillsMarquee() {
         <MarqueeFade side="left" />
         <MarqueeFade side="right" />
         <MarqueeContent>
-          {new Array(10).fill(null).map((_, index) => (
-            <MarqueeItem key={index} className="w-32 h-32">
-              <img
-                src={`https://placehold.co/128x128?random=${index}`}
-                alt={`Image ${index}`}
-                className="rounded-full overflow-hidden"
-              />
+          {items.map((item, index) => (
+            <MarqueeItem key={index} className="space-x-3">
+              <div className="flex flex-col space-y-2">
+                <img
+                  src={item.src}
+                  alt={item.title}
+                  className="h-16"
+                  style={{ objectFit: "contain" }}
+                />
+                <p className="text-xs opacity-85">{item.title}</p>
+              </div>
             </MarqueeItem>
           ))}
         </MarqueeContent>
