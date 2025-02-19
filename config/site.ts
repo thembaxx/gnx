@@ -51,4 +51,9 @@ export const siteConfig = {
     discord: "https://discord.gg/9b6yyZKmH4",
     sponsor: "https://patreon.com/jrgarciadev",
   },
+  profile: {
+    name: "Themba Mndebele",
+    email: "work@themba.dev",
+    website: "https://themba.dev",
+  },
 };
