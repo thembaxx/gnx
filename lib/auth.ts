@@ -4,7 +4,7 @@ import { nextCookies } from "better-auth/next-js";
 
 export const auth = betterAuth({
   database: new VercelPool({
-    connectionString: process.env.POSTGRES_URL,
+    connectionString: process.env.POSTGRES_URL as string,
   }),
   session: {
     cookieCache: {
