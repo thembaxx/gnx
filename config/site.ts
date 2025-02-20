@@ -3,7 +3,8 @@ export type SiteConfig = typeof siteConfig;
 export const siteConfig = {
   name: "GNX",
   description: "Black Grand National!",
-  version: "0.0.0.42",
+  version: "0.0.0.43",
+  baseUrl: "themba.dev",
   navItems: [
     {
       label: "Let’s connect",

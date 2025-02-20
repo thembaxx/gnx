@@ -8,6 +8,7 @@ export async function seedUser(client: VercelPoolClient) {
         "id" VARCHAR(100) DEFAULT uuid_generate_v4(),
         name VARCHAR(255),
         email TEXT UNIQUE,
+        "updatedAt" DATE DEFAULT NOW(),
         PRIMARY KEY("id")
     );
   `;

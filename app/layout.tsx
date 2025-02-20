@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { Providers } from "./providers";
 import Navbar from "@/components/nav-bar/nav-bar";
 import { ReactScan } from "@/components/react-scan";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: {
@@ -44,6 +45,7 @@ export default function RootLayout({
           <>
             <Navbar />
             <main className="grow ">{children}</main>
+            <Toaster />
           </>
         </Providers>
       </body>

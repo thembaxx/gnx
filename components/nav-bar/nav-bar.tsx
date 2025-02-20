@@ -7,6 +7,7 @@ import { Button } from "../ui/button";
 import { siteConfig } from "@/config/site";
 
 import { Menu } from "./menu";
+import AdminLoginButton from "./admin-login-button";
 
 const MenuIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -60,6 +61,11 @@ function Navbar() {
             </Link>
           </li>
         ))}
+        <li className="hidden md:block">
+          <div className="py-4 px-6 flex">
+            <AdminLoginButton />
+          </div>
+        </li>
       </ul>
     </nav>
   );

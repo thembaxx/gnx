@@ -17,6 +17,7 @@ import { cn } from "@/lib/utils";
 import { Separator } from "../ui/separator";
 import ThemeSwitcher from "./theme-switcher";
 import { Logo } from "@/lib/icons";
+import AdminLoginButton from "./admin-login-button";
 
 interface MenuProps {
   children: ReactNode;
@@ -124,6 +125,9 @@ export const Menu = ({ children }: MenuProps) => {
               </li>
             ))}
           </ul>
+          <div className="py-4 px-6 flex">
+            <AdminLoginButton onClick={() => setIsMenuOpen(false)} />
+          </div>
           <Separator />
           <div className="px-6 py-8 space-y-4">
             {/* <div className="flex items-center py-2 -ml-[11px]">
