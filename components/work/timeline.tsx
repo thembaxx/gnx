@@ -164,7 +164,7 @@ function Timeline() {
                   </div>
                 </div>
                 <div className="pt-4 text-xs font-medium flex items-center space-x-2">
-                  <SourceCodeSquareIcon className="h-4 w-4" />
+                  <SourceCodeSquareIcon className="h-4 w-4 text-icon" />
                   <span>HTML5, Azure DevOps and +12 skills</span>
                 </div>
                 <div className="pt-4">
@@ -216,7 +216,7 @@ function Timeline() {
               <div className="grid grid-rows-[36px_1fr] gap-1 text-sm ">
                 <div className="flex items-center h-full">
                   <p className="font-medium text-foreground/90">
-                    12 Invoices have been paid
+                    Frontend Developer
                   </p>
                 </div>
                 <p className="row-start-2 text-sm text-secondary-foreground/80">
@@ -224,9 +224,9 @@ function Timeline() {
                 </p>
                 <div className="flex flex-wrap gap-2 py-4">
                   <Link href="/invoice.pdf">
-                    <div className="flex items-center gap-2 text-[13px] px-3 py-2 rounded-md bg-secondary">
-                      <PdfIcon className="h-4 w-4 text-[#fb4141]" />
-                      <span className="leading-none">
+                    <div className="flex items-center gap-2 text-[13px] px-2.5 py-2 rounded-md bg-neutral-100 dark:bg-[#121212]">
+                      <PdfIcon className="h-4 w-4 text-red-500 dark:text-white" />
+                      <span className="leading-none text-xs">
                         Perfomance Evaluation
                       </span>
                     </div>
@@ -267,9 +267,9 @@ function Timeline() {
                 </p>
                 <div className="flex flex-wrap gap-2 py-4">
                   <Link href="/invoice.pdf">
-                    <div className="flex items-center gap-2 text-xs px-3 py-2 rounded-md bg-[#121212]">
-                      <PdfIcon className="h-4 w-4" />
-                      <span className="leading-none">Promotion</span>
+                    <div className="flex items-center gap-2 text-xs px-2 py-2 rounded-md  bg-neutral-100 dark:bg-[#121212]">
+                      <PdfIcon className="h-4 w-4 text-red-600 dark:text-white" />
+                      <span className="leading-none text-xs">Promotion</span>
                     </div>
                   </Link>
                 </div>

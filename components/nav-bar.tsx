@@ -17,7 +17,7 @@ import {
 import { Separator } from "./ui/separator";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-// import ThemeSwitcher from "./theme-switcher";
+import ThemeSwitcher from "./theme-switcher";
 
 interface NavItemProps {
   title: string;
@@ -354,10 +354,10 @@ function Navbar() {
                 </a>
               </div>
               <Separator />
-              {/* <div className="px-4 py-6">
+              <div className="px-4 py-6">
                 <ThemeSwitcher />
               </div>
-              <Separator /> */}
+              <Separator />
               <div className="pt-6 pb-6 px-4 space-y-6">
                 <p className="text-[11px] text-muted-foreground">
                   {siteConfig.name} © <>{new Date().getFullYear()}</>{" "}
