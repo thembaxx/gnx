@@ -4,7 +4,7 @@ import "../styles/globals.css";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { Providers } from "./providers";
-import Navbar from "@/components/nav-bar";
+import Navbar from "@/components/nav-bar/nav-bar";
 import { ReactScan } from "@/components/react-scan";
 
 export const metadata: Metadata = {
