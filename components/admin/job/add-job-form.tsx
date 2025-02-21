@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/form";
 
 import { Input } from "@/components/ui/input";
-import { JobProps } from "@/types";
+// import { JobProps } from "@/types";
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
