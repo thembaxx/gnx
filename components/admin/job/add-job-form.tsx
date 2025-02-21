@@ -31,9 +31,9 @@ import {
 import { CalendarIcon } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
 
-interface Props {
-  onSubmitHandler: (data: JobProps) => void;
-}
+// interface Props {
+//   onSubmitHandler: (data: JobProps) => void;
+// }
 
 const formSchema = z.object({
   companyName: z.string().min(2),
@@ -187,12 +187,12 @@ function AddJobForm() {
                 </FormItem>
               )}
             />
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-3 w-full overflow-hidden">
               <FormField
                 control={form.control}
                 name="startDate"
                 render={({ field }) => (
-                  <FormItem className="flex flex-col">
+                  <FormItem className="flex flex-col relative">
                     <FormLabel>Start Date</FormLabel>
                     <Popover>
                       <PopoverTrigger asChild>
@@ -200,7 +200,7 @@ function AddJobForm() {
                           <Button
                             variant={"outline"}
                             className={cn(
-                              "w-[240px] pl-3 text-left font-normal",
+                              "w-full pl-3 text-left font-normal",
                               !field.value && "text-muted-foreground"
                             )}
                           >
@@ -234,7 +234,7 @@ function AddJobForm() {
                 control={form.control}
                 name="endDate"
                 render={({ field }) => (
-                  <FormItem className="flex flex-col col-start-2">
+                  <FormItem className="flex flex-col relative">
                     <FormLabel>End Date</FormLabel>
                     <Popover>
                       <PopoverTrigger asChild>
@@ -242,7 +242,7 @@ function AddJobForm() {
                           <Button
                             variant={"outline"}
                             className={cn(
-                              "w-[240px] pl-3 text-left font-normal",
+                              "w-full pl-3 text-left font-normal",
                               !field.value && "text-muted-foreground"
                             )}
                           >
