@@ -18,9 +18,12 @@ import { Separator } from "../ui/separator";
 import ThemeSwitcher from "./theme-switcher";
 import { Logo } from "@/lib/icons";
 import AdminLoginButton from "./admin-login-button";
+import { auth } from "@/lib/auth";
+import Profile from "./profile";
 
 interface MenuProps {
   children: ReactNode;
+  user: typeof auth.$Infer.Session.user | undefined;
 }
 
 const FileDownloadIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -83,7 +86,7 @@ const MailSendIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-export const Menu = ({ children }: MenuProps) => {
+export const Menu = ({ children, user }: MenuProps) => {
   const pathname = usePathname();
   const [menuIsOpen, setIsMenuOpen] = useState(false);
 
@@ -125,8 +128,11 @@ export const Menu = ({ children }: MenuProps) => {
               </li>
             ))}
           </ul>
-          <div className="py-4 px-6 flex">
-            <AdminLoginButton onClick={() => setIsMenuOpen(false)} />
+          <div className="py-4 px-6 flex overflow-hidden">
+            {!user && <AdminLoginButton onClick={() => setIsMenuOpen(false)} />}
+            {user && (
+              <Profile user={user} onClick={() => setIsMenuOpen(false)} />
+            )}
           </div>
           <Separator />
           <div className="px-6 py-8 space-y-4">
@@ -167,7 +173,7 @@ export const Menu = ({ children }: MenuProps) => {
             <ThemeSwitcher />
           </div>
           <Separator />
-          <div className="pt-6 pb-6 px-4 space-y-6">
+          <div className="py-2 px-4">
             <p className="text-[11px] text-muted-foreground">
               {siteConfig.name} © <>{new Date().getFullYear()}</>{" "}
               {` v${siteConfig.version}`}

@@ -231,8 +231,12 @@ function LoginForm() {
                     disabled={isPending}
                     onClick={() => setShowPassword(!showPassword)}
                   >
-                    {showPassword && <ViewOffIcon className="h-4 w-4" />}
-                    {!showPassword && <ViewIcon className="h-4 w-4" />}
+                    {showPassword && (
+                      <ViewOffIcon className="h-4 w-4 text-icon" />
+                    )}
+                    {!showPassword && (
+                      <ViewIcon className="h-4 w-4 text-icon" />
+                    )}
                   </Button>
                 </div>
               </FormControl>

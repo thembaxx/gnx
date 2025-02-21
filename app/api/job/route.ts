@@ -1,14 +1,14 @@
 import { AddJob, getJob } from "@/lib/job/job";
-import { seedJob } from "@/lib/seed-database";
 import { JobProps } from "@/types";
 import { db } from "@vercel/postgres";
+import { NextRequest } from "next/server";
 
 const client = await db.connect();
 
-export async function POST(data: JobProps) {
+export async function POST(request: NextRequest) {
   try {
+    const data = (await request.json()) as JobProps;
     await client.sql`BEGIN`;
-    await seedJob(client);
     await AddJob(client, data);
     await client.sql`COMMIT`;
 
@@ -21,8 +21,9 @@ export async function POST(data: JobProps) {
   }
 }
 
-export async function GET(jobId?: string) {
+export async function GET(request: NextRequest) {
   try {
+    const jobId = await request.json();
     const data = await getJob(client, jobId);
 
     return Response.json({ data });

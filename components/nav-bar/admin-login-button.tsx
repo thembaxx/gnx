@@ -32,11 +32,11 @@ const MicrosoftAdminIcon = (props: React.SVGProps<SVGSVGElement>) => (
 function AdminLoginButton({ onClick }: Props) {
   return (
     <Link
-      className="px-2 pr-3 h-9 border border-primary text-foreground rounded-lg shadow flex items-center gap-2 text-sm font-semibold"
+      className="px-2 pr-3 h-8 border border-primary text-foreground rounded-lg shadow/60 flex items-center gap-2 text-sm font-medium"
       href="/admin/login"
       onClick={onClick}
     >
-      <MicrosoftAdminIcon className="h-5 w-5 text-icon shrink-0" />
+      <MicrosoftAdminIcon className="h-4 w-4 text-icon shrink-0" />
       <span>Admin login</span>
     </Link>
   );

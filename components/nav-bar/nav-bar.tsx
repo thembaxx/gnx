@@ -1,13 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
 
 import { Button } from "../ui/button";
 import { siteConfig } from "@/config/site";
 
 import { Menu } from "./menu";
 import AdminLoginButton from "./admin-login-button";
+import { authClient } from "@/lib/auth-client";
 
 const MenuIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -37,10 +37,12 @@ const MenuIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 function Navbar() {
+  const { data } = authClient.useSession();
+
   return (
     <nav className="w-full h-16 flex items-center px-6 sticky top-0 z-20 shrink-0 bg-background/80 backdrop-blur-xl">
       <div className="grow flex items-center">
-        <Menu>
+        <Menu user={data?.user}>
           <Button className="p-0" size="icon" variant="ghost">
             <MenuIcon className="!h-6 !w-6" />
           </Button>
@@ -61,11 +63,26 @@ function Navbar() {
             </Link>
           </li>
         ))}
-        <li className="hidden md:block">
-          <div className="py-4 px-6 flex">
-            <AdminLoginButton />
-          </div>
-        </li>
+        {!data?.user && (
+          <li className="hidden md:block">
+            <div className="py-4 px-6 flex">
+              <AdminLoginButton />
+            </div>
+          </li>
+        )}
+        {data?.user && (
+          <li className="hidden md:block">
+            <div className="flex items-center py-4 px-6">
+              <Button
+                size="sm"
+                variant="destructive"
+                onClick={async () => await authClient.signOut()}
+              >
+                Sign out
+              </Button>
+            </div>
+          </li>
+        )}
       </ul>
     </nav>
   );
