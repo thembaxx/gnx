@@ -16,16 +16,16 @@ export default function NotFound() {
         </div>
       </div>
       <div className="shadow-xl">
-        <Image src="/textures.png" alt="" height={256} width={256} />
+        <Image src="/images/textures.png" alt="" height={256} width={256} />
       </div>
-      <div className="text-center text-sm">
+      <div className="text-center text-sm max-w-50 space-y-1">
         <p className="font-medium">
           {"We couldn't find the page you were looking for."}
         </p>
         <p>
-          Head back to the{" "}
+          Head back to{" "}
           <Link href="/" className="underline">
-            home
+            homepage
           </Link>
         </p>
       </div>

@@ -16,7 +16,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Separator } from "../ui/separator";
 import ThemeSwitcher from "./theme-switcher";
-import { Logo } from "@/lib/icons";
+import { Logo, MicrosoftAdminIcon } from "@/lib/icons";
 import AdminLoginButton from "./admin-login-button";
 import { auth } from "@/lib/auth";
 import Profile from "./profile";
@@ -153,6 +153,16 @@ export const Menu = ({ children, user }: MenuProps) => {
                     <DiscordIcon className="h-5 w-5 text-icon" />
                   </div>
                 </div> */}
+            {user && (
+              <Link
+                className="flex items-center gap-2 text-sm text-secondary-foreground"
+                href="/admin"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <MicrosoftAdminIcon className="h-4 w-4 text-icon shrink-0" />
+                <span>Administration</span>
+              </Link>
+            )}
             <a
               href={`mailto:${siteConfig.profile.email}`}
               className="flex items-center gap-2 text-sm text-secondary-foreground"
@@ -173,7 +183,7 @@ export const Menu = ({ children, user }: MenuProps) => {
             <ThemeSwitcher />
           </div>
           <Separator />
-          <div className="py-2 px-4">
+          <div className="py-3 px-4">
             <p className="text-[11px] text-muted-foreground">
               {siteConfig.name} © <>{new Date().getFullYear()}</>{" "}
               {` v${siteConfig.version}`}

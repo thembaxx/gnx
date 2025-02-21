@@ -1,8 +1,8 @@
 "use client";
 
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { cn } from "@/lib/utils";
-import { Check, Minus } from "lucide-react";
+// import { cn } from "@/lib/utils";
+// import { Check, Minus } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useId } from "react";
 
@@ -12,7 +12,7 @@ const PaintBucketIcon = (props: React.SVGProps<SVGSVGElement>) => (
     viewBox="0 0 24 24"
     width={24}
     height={24}
-    color={"#fafafa"}
+    color="currentColor"
     fill={"none"}
     {...props}
   >
@@ -69,11 +69,11 @@ export default function ThemeSwitcher() {
             <img
               src={item.image}
               alt={item.label}
-              width={88}
-              height={70}
+              width={64}
+              height={56}
               className="relative cursor-pointer overflow-hidden rounded-lg border border-input shadow-sm shadow-black/5 outline-offset-2 transition-colors peer-[:focus-visible]:outline-2 peer-[:focus-visible]:outline-ring/70 peer-data-[disabled]:cursor-not-allowed peer-data-[state=checked]:border-ring peer-data-[state=checked]:bg-accent peer-data-[disabled]:opacity-50"
             />
-            <span className="group mt-2 flex items-center gap-1 peer-data-[state=unchecked]:text-muted-foreground/70">
+            {/* <span className="group mt-2 flex items-center gap-1 peer-data-[state=unchecked]:text-muted-foreground/70">
               <Check
                 size={16}
                 strokeWidth={2}
@@ -91,7 +91,7 @@ export default function ThemeSwitcher() {
                 aria-hidden="true"
               />
               <span className="text-xs font-medium">{item.label}</span>
-            </span>
+            </span> */}
           </label>
         ))}
       </RadioGroup>

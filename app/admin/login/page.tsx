@@ -34,7 +34,7 @@ function AdminLoginPage() {
     };
 
     init();
-  }, []);
+  }, [router]);
 
   if (isLoading)
     return (

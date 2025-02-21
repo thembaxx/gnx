@@ -20,9 +20,11 @@ function Profile({ user, onClick }: ProfileProps) {
         </Avatar>
         <div className="text-sm">
           <p className="font-medium truncate">{user.name}</p>
-          <p className="text-secondary-foreground truncate">{user.email}</p>
+          <p className="text-secondary-foreground/70 text-[0.8rem] truncate">
+            {user.email}
+          </p>
           <Button
-            className="font-medium px-0 text-destructive"
+            className="font-medium text-[0.8rem] px-0 text-destructive"
             size="sm"
             variant="link"
             onClick={async () => {

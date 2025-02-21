@@ -71,6 +71,16 @@ function Navbar() {
           </li>
         )}
         {data?.user && (
+          <li>
+            <Link
+              href="/admin"
+              className="h-full p-2 hover:underline hidden md:block"
+            >
+              Admin
+            </Link>
+          </li>
+        )}
+        {data?.user && (
           <li className="hidden md:block">
             <div className="flex items-center py-4 px-6">
               <Button
