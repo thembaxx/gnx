@@ -65,7 +65,6 @@ function AddJobForm() {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
-    // const data: JobProps = {}
   }
 
   return (
