@@ -10,6 +10,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+
 import AddJobForm from "./add-job-form";
 // import { JobProps } from "@/types";
 
@@ -23,7 +24,7 @@ function AddJob({ children }: AddJobProps) {
   // }
 
   return (
-    <Drawer defaultOpen>
+    <Drawer>
       <DrawerTrigger asChild>{children}</DrawerTrigger>
       <DrawerContent className="max-h-[90svh] h-full overflow-hidden">
         <DrawerHeader>
