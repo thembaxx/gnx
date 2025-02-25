@@ -20,7 +20,7 @@ function SkillsMarquee() {
                 <img
                   src={item.src}
                   alt={item.title}
-                  className={cn("h-16", { invert: item.invert })}
+                  className={cn("h-11", { invert: !!item.invert })}
                   style={{ objectFit: "contain" }}
                 />
                 <p className="text-xs opacity-85">{item.title}</p>

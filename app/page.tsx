@@ -4,6 +4,7 @@ import SkillsMarquee from "@/components/skills-marquee/skills-marquee";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import { Logo } from "@/lib/icons";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
@@ -35,7 +36,9 @@ export default function Home() {
           </div>
           <span>See my projects by tapping below.</span>
         </div>
-
+        <div className="fixed right-8 top4 my-auto hidden md:block pt-16">
+          <Image src="/themba-qr-code.svg" alt="" height={64} width={64} />
+        </div>
         <div>
           <Button className="rounded-full" onClick={() => router.push("/work")}>
             Browse .projekts
