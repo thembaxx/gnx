@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 
 import {
@@ -11,7 +13,20 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+
 import AddJobForm from "./add-job-form";
+import { useState } from "react";
+import { useMediaQuery } from "@/hooks/use-media-query";
 // import { JobProps } from "@/types";
 
 interface AddJobProps {
@@ -19,12 +34,38 @@ interface AddJobProps {
 }
 
 function AddJob({ children }: AddJobProps) {
+  const [open, setOpen] = useState(false);
+  const isDesktop = useMediaQuery("(min-width: 768px)");
   // async function onSubmitHandler(data: JobProps) {
   //   console.log(data);
   // }
 
+  if (isDesktop) {
+    return (
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogTrigger asChild>{children}</DialogTrigger>
+        <DialogContent className="sm:max-w-md max-h-[90svh] h-full overflow-hidden">
+          <DialogHeader>
+            <DialogTitle>Add Job</DialogTitle>
+            <DialogDescription>Add a new job to your CV</DialogDescription>
+          </DialogHeader>
+          <div className="grow py-4 pl-0 pr-4 overflow-y-auto">
+            <AddJobForm />
+          </div>
+          <DialogFooter>
+          <Button type="submit">Add Job</Button>
+            <DialogClose asChild>
+            <Button variant="outline">Cancel</Button>
+            </DialogClose>
+          </DialogFooter>
+        </DialogContent>
+      
+      </Dialog>
+    );
+  }
+
   return (
-    <Drawer>
+    <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>{children}</DrawerTrigger>
       <DrawerContent className="max-h-[90svh] h-full overflow-hidden">
         <DrawerHeader>

@@ -1,14 +1,11 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
-import React from "react";
 import AddJob from "./add-job";
 
-function AddJobButton() {
+async function AddJobButton() {
   return (
-    <div className="w-full">
+    <div className="w-full flex justify-center">
       <AddJob>
-        <Button className="w-full">Add a job</Button>
+        <Button className="w-full max-w-sm">Add a job</Button>
       </AddJob>
     </div>
   );
