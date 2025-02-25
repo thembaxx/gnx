@@ -4,7 +4,10 @@ export const siteConfig = {
   name: "GNX",
   description: "Black Grand National!",
   version: "0.0.0.45",
-  baseUrl: "themba.dev",
+  baseUrl:
+    process.env.NODE_ENV === "production"
+      ? "https://themba.dev"
+      : "https://localhost:3000",
   navItems: [
     {
       label: "Let’s connect",
