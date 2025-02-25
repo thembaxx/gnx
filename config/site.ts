@@ -3,7 +3,7 @@ export type SiteConfig = typeof siteConfig;
 export const siteConfig = {
   name: "GNX",
   description: "Black Grand National!",
-  version: "0.0.0.46",
+  version: "0.0.0.47",
   baseUrl:
     process.env.NODE_ENV === "production"
       ? "https://themba.dev"
