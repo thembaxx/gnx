@@ -29,7 +29,7 @@ export default function RootLayout({
       <ReactScan />
       <body
         className={cn(
-          "antialiased selection:bg-blue-300 bg-background font-sans h-screen flex flex-col overflow-y-auto",
+          "antialiased selection:bg-blue-300 bg-background font-sans scrollbar-thin scrollbar-thumb-background/40 h-screen flex flex-col overflow-y-auto",
           fontSans.variable,
           fontSerif.variable
         )}

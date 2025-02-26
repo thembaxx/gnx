@@ -44,22 +44,21 @@ function AddJob({ children }: AddJobProps) {
     return (
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>{children}</DialogTrigger>
-        <DialogContent className="sm:max-w-md max-h-[90svh] h-full overflow-hidden">
+        <DialogContent className="sm:max-w-md max-h-[90svh] px-0 h-full overflow-hidden">
           <DialogHeader>
             <DialogTitle>Add Job</DialogTitle>
             <DialogDescription>Add a new job to your CV</DialogDescription>
           </DialogHeader>
-          <div className="grow py-4 pl-0 pr-4 overflow-y-auto">
+          <div className="grow py-4 pl-0 pr-4 overflow-y-auto scrollbar-thin scrollbar-thumb-background/40">
             <AddJobForm />
           </div>
           <DialogFooter>
-          <Button type="submit">Add Job</Button>
+            <Button type="submit">Add Job</Button>
             <DialogClose asChild>
-            <Button variant="outline">Cancel</Button>
+              <Button variant="outline">Cancel</Button>
             </DialogClose>
           </DialogFooter>
         </DialogContent>
-      
       </Dialog>
     );
   }
