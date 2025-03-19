@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Separator } from "../ui/separator";
 import { Button } from "../ui/button";
 import { Badge } from "@/components/ui/badge";
+import { data } from "./data";
 
 const ArrowDownIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -115,6 +116,69 @@ const SourceCodeSquareIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 function Timeline() {
+  return (
+    <div className="py-8">
+      <ul className="p-6 space-y-6">
+        {data.map((job, index) => (
+          <li key={index}>
+            <div className="space-y-4">
+              <p className="text-sm">{job.job.startDate}</p>
+              <div className="grid grid-cols-[36px_1fr] ">
+                <div className="grid-rows-[36px_1fr]">
+                  <div className="h-9 w-9 flex items-center justify-center">
+                    <div className="flex items-center justify-center rounded-full h-4.5 w-4.5 bg-[#794dff33]">
+                      <div className="w-3 h-3 rounded-full bg-[#794dff]" />
+                    </div>
+                  </div>
+                  <div className="grow flex justify-center row-start-1 h-full max-h-[calc(100%-36px)]">
+                    <Separator orientation="vertical" />
+                  </div>
+                </div>
+                <div className="grid grid-rows-[36px_1fr] gap-1 text-sm ">
+                  <div className="flex items-center h-full">
+                    <p className="font-semibold text-foreground/90">
+                      {job.job.role}
+                    </p>
+                  </div>
+                  <div className="row-start-2 space-y-3">
+                    <p>{job.company.name}</p>
+                    <p className="text-[0.8rem] leading-5 tracking-wide text-secondary-foreground/75 text-pretty">
+                      {job.company.summary}
+                    </p>
+                    <a
+                      className="text-blue-400 font-medium flex items-center gap-2 text-[0.8rem]"
+                      href="https://www.heycarter.co.za/"
+                      target="_blank"
+                    >
+                      <LinkIcon className="h-3 w-3 shrink-0 mt-px" />
+                      <span>{job.company.website}</span>
+                    </a>
+                  </div>
+                  <div className="pt-6 grid-rows-1">
+                    <div className="flex items-center gap-2">
+                      <Badge>{job.job.isRemote ? "Remote" : "On-site"}</Badge>
+                      <Badge>Full-time</Badge>
+                    </div>
+                  </div>
+                  <div className="pt-4 text-xs font-medium flex items-center space-x-2">
+                    <SourceCodeSquareIcon className="h-4 w-4 text-icon" />
+                    <span>HTML5, Azure DevOps and +12 skills</span>
+                  </div>
+                  <div className="pt-4">
+                    <Button className="-ml-2" size="sm" variant="link">
+                      <span className="text-[0.85rem]">Show more</span>
+                      <ArrowDownIcon className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+
   return (
     <div className="py-8">
       <header className="px-6 pb-3">
