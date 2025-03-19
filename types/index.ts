@@ -13,6 +13,7 @@ export type JobProps = {
     name: string;
     summary: string;
     website: string;
+    phone?: string;
   };
   job: {
     isRemote: boolean;
