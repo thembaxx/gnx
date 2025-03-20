@@ -3,6 +3,8 @@ import { Separator } from "../ui/separator";
 import { Button } from "../ui/button";
 import { Badge } from "@/components/ui/badge";
 import { data } from "./data";
+import { cn } from "@/lib/utils";
+import { compareAsc, isEqual } from "date-fns";
 
 const ArrowDownIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -115,66 +117,146 @@ const SourceCodeSquareIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+const CalendarIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    width={24}
+    height={24}
+    color="currentColor"
+    fill={"none"}
+    {...props}
+  >
+    <path
+      d="M18 2V4M6 2V4"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M11.9955 13H12.0045M11.9955 17H12.0045M15.991 13H16M8 13H8.00897M8 17H8.00897"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M3.5 8H20.5"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M2.5 12.2432C2.5 7.88594 2.5 5.70728 3.75212 4.35364C5.00424 3 7.01949 3 11.05 3H12.95C16.9805 3 18.9958 3 20.2479 4.35364C21.5 5.70728 21.5 7.88594 21.5 12.2432V12.7568C21.5 17.1141 21.5 19.2927 20.2479 20.6464C18.9958 22 16.9805 22 12.95 22H11.05C7.01949 22 5.00424 22 3.75212 20.6464C2.5 19.2927 2.5 17.1141 2.5 12.7568V12.2432Z"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M3 8H21"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 function Timeline() {
   return (
     <div className="py-8">
       <ul className="p-6 space-y-6">
-        {data.map((job, index) => (
-          <li key={index}>
-            <div className="space-y-4">
-              <p className="text-sm">{job.job.startDate}</p>
-              <div className="grid grid-cols-[36px_1fr] ">
-                <div className="grid-rows-[36px_1fr]">
-                  <div className="h-9 w-9 flex items-center justify-center">
-                    <div className="flex items-center justify-center rounded-full h-4.5 w-4.5 bg-[#794dff33]">
-                      <div className="w-3 h-3 rounded-full bg-[#794dff]" />
-                    </div>
-                  </div>
-                  <div className="grow flex justify-center row-start-1 h-full max-h-[calc(100%-36px)]">
-                    <Separator orientation="vertical" />
-                  </div>
+        {data.map((job, index) => {
+          return (
+            <li key={index}>
+              <div className="space-y-4">
+                <div className="flex items-center gap-2">
+                  <CalendarIcon className="h-5 w-5" />
+                  <p className="text-sm">{job.job.startDate}</p>
                 </div>
-                <div className="grid grid-rows-[36px_1fr] gap-1 text-sm ">
-                  <div className="flex items-center h-full">
-                    <p className="font-semibold text-foreground/90">
-                      {job.job.role}
-                    </p>
-                  </div>
-                  <div className="row-start-2 space-y-3">
-                    <p>{job.company.name}</p>
-                    <p className="text-[0.8rem] leading-5 tracking-wide text-secondary-foreground/75 text-pretty">
-                      {job.company.summary}
-                    </p>
-                    <a
-                      className="text-blue-400 font-medium flex items-center gap-2 text-[0.8rem]"
-                      href="https://www.heycarter.co.za/"
-                      target="_blank"
-                    >
-                      <LinkIcon className="h-3 w-3 shrink-0 mt-px" />
-                      <span>{job.company.website}</span>
-                    </a>
-                  </div>
-                  <div className="pt-6 grid-rows-1">
-                    <div className="flex items-center gap-2">
-                      <Badge>{job.job.isRemote ? "Remote" : "On-site"}</Badge>
-                      <Badge>Full-time</Badge>
+                <div className="grid grid-cols-[36px_1fr] ">
+                  <div className="grid-rows-[36px_1fr]">
+                    <div className="h-9 w-9 flex items-center justify-center">
+                      <div
+                        className={cn(
+                          "flex items-center justify-center rounded-full h-4.5 w-4.5",
+                          {
+                            "bg-[#794dff33]":
+                              compareAsc(
+                                new Date(job.job.endDate),
+                                new Date()
+                              ) < 0,
+                            "bg-[#02ca4b33": isEqual(
+                              new Date(job.job.endDate),
+                              new Date()
+                            ),
+                          }
+                        )}
+                      >
+                        <div
+                          className={cn("w-3 h-3 rounded-full", {
+                            "bg-[#794dff]":
+                              compareAsc(
+                                new Date(job.job.endDate),
+                                new Date()
+                              ) < 0,
+                            "bg-[#02ca4b]": isEqual(
+                              new Date(job.job.endDate),
+                              new Date()
+                            ),
+                          })}
+                        />
+                      </div>
+                    </div>
+                    <div className="grow flex justify-center row-start-1 h-full max-h-[calc(100%-36px)]">
+                      <Separator orientation="vertical" />
                     </div>
                   </div>
-                  <div className="pt-4 text-xs font-medium flex items-center space-x-2">
-                    <SourceCodeSquareIcon className="h-4 w-4 text-icon" />
-                    <span>HTML5, Azure DevOps and +12 skills</span>
-                  </div>
-                  <div className="pt-4">
-                    <Button className="-ml-2" size="sm" variant="link">
-                      <span className="text-[0.85rem]">Show more</span>
-                      <ArrowDownIcon className="h-4 w-4" />
-                    </Button>
+                  <div className="grid grid-rows-[36px_1fr] gap-1 text-sm ">
+                    <div className="flex items-center h-full">
+                      <p className="font-semibold text-foreground/90">
+                        {job.job.role}
+                      </p>
+                    </div>
+                    <div className="row-start-2 space-y-3">
+                      <p>{job.company.name}</p>
+                      <p className="text-[0.8rem] leading-5 tracking-wide text-secondary-foreground/75 text-pretty">
+                        {job.company.summary}
+                      </p>
+                      <a
+                        className="text-blue-400 font-medium flex items-center gap-2 text-[0.8rem]"
+                        href="https://www.heycarter.co.za/"
+                        target="_blank"
+                      >
+                        <LinkIcon className="h-3 w-3 shrink-0 mt-px" />
+                        <span>{job.company.website}</span>
+                      </a>
+                    </div>
+                    <div className="pt-6 grid-rows-1">
+                      <div className="flex items-center gap-2">
+                        <Badge>{job.job.isRemote ? "Remote" : "On-site"}</Badge>
+                        <Badge>Full-time</Badge>
+                      </div>
+                    </div>
+                    <div className="pt-4 text-xs font-medium flex items-center space-x-2">
+                      <SourceCodeSquareIcon className="h-4 w-4 text-icon" />
+                      <span>HTML5, Azure DevOps and +12 skills</span>
+                    </div>
+                    <div className="pt-4">
+                      <Button className="-ml-2" size="sm" variant="link">
+                        <span className="text-[0.8rem]">Show more</span>
+                        <ArrowDownIcon className="h-4 w-4" />
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </li>
-        ))}
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

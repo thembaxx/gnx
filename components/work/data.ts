@@ -1,5 +1,7 @@
 import { JobProps } from "@/types";
 
+const today = new Date();
+
 export const data: JobProps[] = [
   {
     company: {
@@ -14,8 +16,12 @@ export const data: JobProps[] = [
     job: {
       isRemote: true,
       role: "Frontend Web Developer",
-      startDate: "Novermber 2024",
-      endDate: new Date().toString(),
+      startDate: new Date(2024, 10, 12).toDateString(),
+      endDate: new Date(
+        today.getFullYear(),
+        today.getMonth(),
+        today.getDate()
+      ).toDateString(),
       skillsUsed: [
         "HTML5",
         "JavaScript",
@@ -39,15 +45,15 @@ export const data: JobProps[] = [
       logo: "Carter is start-up revolutionising the customer journey and experience to make new car buying hassle free and convenient.",
       name: "Carter",
       summary:
-        'RattleHub is a Canadian software company building tools which allow Financial Institutions, and other companies, to be The Legacy Partner to their clients, helping achieve our vision of "Estate Planning Simplified"',
+        "Carter is start-up revolutionising the customer journey and experience to make new car buying hassle free and convenient",
       website: "https://www.heycarter.com",
       phone: "010 045 2682",
     },
     job: {
       isRemote: true,
       role: "Frontend Web Developer",
-      startDate: "July 2023",
-      endDate: "September 2024",
+      startDate: new Date(2023, 6, 1).toDateString(),
+      endDate: new Date(2024, 10, 30).toDateString(),
       skillsUsed: [
         "HTML5",
         "JavaScript",
@@ -79,8 +85,8 @@ export const data: JobProps[] = [
     job: {
       isRemote: true,
       role: "Jnr. Frontend Developer",
-      startDate: "April 2022",
-      endDate: "July 2023",
+      startDate: new Date(2022, 3, 17).toDateString(),
+      endDate: new Date(2023, 6, 1).toDateString(),
       skillsUsed: [
         "HTML5",
         "JavaScript",
